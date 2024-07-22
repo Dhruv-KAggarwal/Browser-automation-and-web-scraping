@@ -12,7 +12,8 @@ def get_driver():
     options.add_argument("disable-dev-shm-usage")  # Avoid issue when interacting with browser on Linux machine
     options.add_argument("no-sandbox")
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    options.add_experimental_option("disable-blink-features", "AutomationControlled")
+    options.add_experimental_option("useAutomationExtension", False)  # This option should be used instead
+    options.add_argument("--disable-blink-features=AutomationControlled")  # Correct usage of disable-blink-features
     
     driver = webdriver.Chrome(service=service, options=options)
     driver.get("https://automated.pythonanywhere.com")
